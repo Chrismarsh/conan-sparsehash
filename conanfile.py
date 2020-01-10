@@ -12,6 +12,7 @@ class SparsehashConan(ConanFile):
               "dense_hash_map", "sparse_hash_map",
               "dense_hash_set", "sparse_hash_set")
     author = "Xiaoge Su <magichp|at|gmail.com>"
+    settings = "os", "arch", "compiler", "build_type"
     url = "https://github.com/bincrafters/conan-sparsehash"
     exports = ["LICENSE"]
     _autotools = None
