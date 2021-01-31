@@ -19,7 +19,7 @@ class SparsehashConan(ConanFile):
 
     def source(self):
         tools.get(**self.conan_data["sources"][self.version])
-        os.rename("sparsehash-{}".format(self.version), self._source_subfolder)
+        os.rename("sparsehash-sparsehash-{}".format(self.version), self._source_subfolder)
 
     def _configure_autotools(self):
         if not self._autotools:
