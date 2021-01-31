@@ -4,28 +4,22 @@ import os
 
 class SparsehashConan(ConanFile):
     name = "sparsehash"
-    version = "2.0.3"
     description = "The C++ associative containers"
     homepage = "https://github.com/sparsehash/sparsehash"
     license = "BSD-3-Clause"
     topics = ("conan", "libsparsehash",
               "dense_hash_map", "sparse_hash_map",
               "dense_hash_set", "sparse_hash_set")
-    author = "Xiaoge Su <magichp|at|gmail.com>"
     settings = "os", "arch", "compiler", "build_type"
-    url = "https://github.com/bincrafters/conan-sparsehash"
+    url = "https://github.com/Chrismarsh/conan-sparsehash"
     exports = ["LICENSE"]
     _autotools = None
 
-    @property
-    def _source_subfolder(self):
-        return "source_subfolder"
+    _source_subfolder = 'sparsehash'
 
     def source(self):
-        sha256="05e986a5c7327796dad742182b2d10805a8d4f511ad090da0490f146c1ff7a8c"
-        tools.get("{}/archive/sparsehash-{}.tar.gz".format(self.homepage, self.version), sha256=sha256)
-        extracted_directory = "{}-{}-{}".format(self.name, self.name, self.version)
-        os.rename(extracted_directory, self._source_subfolder)
+        tools.get(**self.conan_data["sources"][self.version])
+        os.rename("sparsehash-{}".format(self.version), self._source_subfolder)
 
     def _configure_autotools(self):
         if not self._autotools:
